@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   datasource:
     url: ${DB_URL}
@@ -18,8 +21,10 @@ spring:
     init:
       mode: never
 
-server:
-  port: 8080
+jwt:
+  secret: ${JWT_SECRET_KEY}
+  access-token-expiry: 1800000
+  refresh-token-expiry: 2592000000
 
 logging:
   level:
