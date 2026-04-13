@@ -51,6 +51,15 @@ public class UserDevice {
         this.deviceUuid = deviceUuid;
     }
 
+    public static UserDevice create(Users user, String deviceUuid, DeviceType type, String info) {
+        UserDevice userDevice = new UserDevice();
+        userDevice.user = user;
+        userDevice.deviceUuid = deviceUuid;
+        userDevice.type = type;
+        userDevice.info = info;
+        return userDevice;
+    }
+
     public static UserDevice createIOS(Users user, String info, String deviceUuid) {
         return new UserDevice(user, DeviceType.APP_IOS, info, deviceUuid);
     }
