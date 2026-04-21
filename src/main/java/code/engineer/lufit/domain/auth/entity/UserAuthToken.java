@@ -41,11 +41,15 @@ public class UserAuthToken {
     @Column(name = "expires_at")
     private LocalDateTime expiresAt;
 
-    private UserAuthToken(Users user, UserDevice userDevice, String token, Boolean isRevoked) {
-        this.user = user;
-        this.userDevice = userDevice;
-        this.token = token;
-        this.isRevoked = false;
+    public static UserAuthToken create(Users user, UserDevice userDevice, String token, LocalDateTime expiresAt) {
+        UserAuthToken userAuthToken = new UserAuthToken();
+        userAuthToken.user = user;
+        userAuthToken.userDevice = userDevice;
+        userAuthToken.token = token;
+        userAuthToken.isRevoked = false;
+        userAuthToken.createdAt = LocalDateTime.now();
+        userAuthToken.expiresAt = expiresAt;
+        return userAuthToken;
     }
 
     public void revoke() {

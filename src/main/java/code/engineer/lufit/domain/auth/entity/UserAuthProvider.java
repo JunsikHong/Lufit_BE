@@ -46,31 +46,12 @@ public class UserAuthProvider {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    private UserAuthProvider(Users user, Provider provider, String providerUuid, String email, String password) {
-        this.user = user;
-        this.provider = provider;
-        this.providerUuid = providerUuid;
-        this.email = email;
-        this.password = password;
-    }
-
-    public static UserAuthProvider createLocalUser(Users user, String providerUuid, String email, String password) {
-        return new UserAuthProvider(user, Provider.LOCAL, providerUuid, email, password);
-    }
-
-    public static UserAuthProvider createKakaoUser(Users user, String providerUuid, String email, String password) {
-        return new UserAuthProvider(user, Provider.KAKAO, providerUuid, email, password);
-    }
-
-    public static UserAuthProvider createNaverUser(Users user, String providerUuid, String email, String password) {
-        return new UserAuthProvider(user, Provider.NAVER, providerUuid, email, password);
-    }
-
-    public static UserAuthProvider createGoogleUser(Users user, String providerUuid, String email, String password) {
-        return new UserAuthProvider(user, Provider.GOOGLE, providerUuid, email, password);
-    }
-
-    public static UserAuthProvider createAppleUser(Users user, String providerUuid, String email, String password) {
-        return new UserAuthProvider(user, Provider.APPLE, providerUuid, email, password);
+    public static UserAuthProvider createLocalUser(Users user, String email, String encodedPassword) {
+        UserAuthProvider userAuthProvider = new UserAuthProvider();
+        userAuthProvider.user = user;
+        userAuthProvider.provider = Provider.LOCAL;
+        userAuthProvider.email = email;
+        userAuthProvider.password = encodedPassword;
+        return userAuthProvider;
     }
 }

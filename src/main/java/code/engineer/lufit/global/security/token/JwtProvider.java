@@ -74,4 +74,8 @@ public class JwtProvider {
         }
         return false;
     }
+
+    public long getRefreshTokenExpiry() {
+        return refreshTokenExpiry;
+    }
 }
